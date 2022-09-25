@@ -100,8 +100,8 @@ class RouterRebooter():
                 sleep(self.post_reboot_limit_interval)
             else:
                 log(f"Network appears down. Pulsing GPIO pin {self.relay_gpio_pin}.")
-                #with pin_pulser(self.relay_gpio_pin) as pulse_pin:
-                    #pulse_pin(self.pulse_for_seconds)
+                with pin_pulser(self.relay_gpio_pin) as pulse_pin:
+                    pulse_pin(self.pulse_for_seconds)
                 self.reboot_count += 1
                 log(f"This is reboot attempt {self.reboot_count}.")
                 sleep(self.post_reboot_interval)
