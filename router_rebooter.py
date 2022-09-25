@@ -21,6 +21,7 @@ import argparse
 PING_INTERFACE = 'wlan0'
 INTERFACE_CHECK_CMD = ['cat', '/sys/class/net/{}/operstate']
 PING_CMD = ['ping', '-i', '0.2', '-c', '5', '-I']
+# Public ping-able servers owned by CloudFlare, Level3, and Google respectively
 PING_DESTINATIONS = ['1.1.1.1', '4.2.2.2', '8.8.8.8']
 PING_INTERVAL = 15.0
 MIN_PING_INTERVAL = 1.0
