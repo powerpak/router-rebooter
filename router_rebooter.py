@@ -155,8 +155,9 @@ if __name__ == "__main__":
 
     # Parse arguments.
     args = parser.parse_args()
-    # On error this will print help and cause exit with explanation message.
+    # On error, this will print help and exit with an explanation message.
 
+    # Validate some of the arguments.
     if not 0 < args.relay_gpio_pin < MAX_PIN_NUM:
         parser.error(f"--relay-gpio-pin must be an integer between 1 and {MAX_PIN_NUM}.")
     if args.pulse_for_seconds <= 0:
@@ -168,5 +169,6 @@ if __name__ == "__main__":
     if args.post_reboot_limit_interval < args.post_reboot_interval:
         parser.error("--post-reboot-limit-interval needs to be longer than --post-reboot-interval.")
 
+    # Kick off the main loop.
     rebooter = RouterRebooter(**vars(args))
     rebooter.start_main_loop()
